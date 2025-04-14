@@ -1,28 +1,66 @@
 from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
 
-class H1RoughCfg( LeggedRobotCfg ):
+class X1RoughCfg( LeggedRobotCfg ):
     class init_state( LeggedRobotCfg.init_state ):
         pos = [0.0, 0.0, 1.0] # x,y,z [m]
         default_joint_angles = { # = target angles [rad] when action = 0.0
-           'left_hip_yaw_joint' : 0. ,   
-           'left_hip_roll_joint' : 0,               
-           'left_hip_pitch_joint' : -0.1,         
-           'left_knee_joint' : 0.3,       
-           'left_ankle_joint' : -0.2,     
-           'right_hip_yaw_joint' : 0., 
-           'right_hip_roll_joint' : 0, 
-           'right_hip_pitch_joint' : -0.1,                                       
-           'right_knee_joint' : 0.3,                                             
-           'right_ankle_joint' : -0.2,                                     
-           'torso_joint' : 0., 
-           'left_shoulder_pitch_joint' : 0., 
-           'left_shoulder_roll_joint' : 0, 
-           'left_shoulder_yaw_joint' : 0.,
-           'left_elbow_joint'  : 0.,
-           'right_shoulder_pitch_joint' : 0.,
-           'right_shoulder_roll_joint' : 0.0,
-           'right_shoulder_yaw_joint' : 0.,
-           'right_elbow_joint' : 0.,
+            'lumber_yaw_joint' : 0.,
+            'lumber_roll_joint' : 0.,
+            'lumber_pitch_joint' : 0.,
+            'left_shoulder_pitch_joint' : 0.,
+            'left_shoulder_roll_joint' : 0.,
+            'left_shoulder_yaw_joint' : 0.,
+            'left_elbow_pitch_joint'  : 0.,
+            'left_elbow_yaw_joint' : 0.,
+            'left_wrist_pitch_joint' : 0.,
+            'right_shoulder_pitch_joint' : 0.,
+            'right_shoulder_roll_joint' : 0.,
+            'right_shoulder_yaw_joint' : 0.,
+            'right_elbow_pitch_joint' : 0.,
+            'right_elbow_yaw_joint' : 0.,
+            'right_wrist_pitch_joint' : 0.,
+            'waist_motor_a_link_joint' : 0.,
+            'waist_motor_a_ball_joint' : 0.,
+            'waist_motor_a_loop_joint' : 0.,
+            'waist_motor_b_link_joint' : 0.,
+            'waist_motor_b_ball_joint' : 0.,
+            'waist_motor_b_loop_joint' : 0.,
+            'left_hip_pitch_joint' : 0.,
+            'left_hip_roll_joint' : 0.,
+            'left_hip_yaw_joint' : 0.,
+            'left_knee_pitch_joint' : 0.,
+            'left_ankle_pitch_joint' : 0.,
+            'left_ankle_roll_joint' : 0.,
+            'leg_l_toe_a_link_joint' : 0.,
+            'leg_l_toe_a_ball_joint' : 0.,
+            'leg_l_toe_a_loop_joint' : 0.,
+            'leg_l_toe_b_link_joint' : 0.,
+            'leg_l_toe_b_ball_joint' : 0.,
+            'leg_l_toe_b_loop_joint' : 0.,
+            'right_hip_pitch_joint' : 0.,
+            'right_hip_roll_joint' : 0.,
+            'right_hip_yaw_joint' : 0.,
+            'right_knee_pitch_joint' : 0.,
+            'right_ankle_pitch_joint' : 0.,
+            'right_ankle_roll_joint' : 0.,
+            'leg_r_toe_a_link_joint' : 0.,
+            'leg_r_toe_a_ball_joint' : 0.,
+            'leg_r_toe_a_loop_joint' : 0.,
+            'leg_r_toe_b_link_joint' : 0.,
+            'leg_r_toe_b_ball_joint' : 0.,
+            'leg_r_toe_b_loop_joint' : 0.,
+            'arm_r_wrist_a_ball_joint' : 0.,
+            'arm_r_wrist_motor_a_link_joint' : 0.,
+            'arm_r_wrist_a_loop_joint' : 0.,
+            'arm_r_wrist_b_ball_joint' : 0.,
+            'arm_r_wrist_motor_b_link_joint' : 0.,
+            'arm_r_wrist_b_loop_joint' : 0.,
+            'arm_l_wrist_a_ball_joint' : 0.,
+            'arm_l_wrist_motor_a_link_joint' : 0.,
+            'arm_l_wrist_a_loop_joint' : 0.,
+            'arm_l_wrist_b_ball_joint' : 0.,
+            'arm_l_wrist_motor_b_link_joint' : 0.,
+            'arm_l_wrist_b_loop_joint' : 0.,
         }
     
     class env(LeggedRobotCfg.env):
@@ -69,11 +107,11 @@ class H1RoughCfg( LeggedRobotCfg ):
         decimation = 4
 
     class asset( LeggedRobotCfg.asset ):
-        file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/h1/urdf/h1.urdf'
-        name = "h1"
+        file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/x1/urdf/x1.urdf'
+        name = "x1"
         foot_name = "ankle"
         penalize_contacts_on = ["hip", "knee"]
-        terminate_after_contacts_on = ["pelvis"]
+        terminate_after_contacts_on = ["base_link"]
         self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
         flip_visual_attachments = False
   
@@ -99,7 +137,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             feet_swing_height = -20.0
             contact = 0.18
 
-class H1RoughCfgPPO( LeggedRobotCfgPPO ):
+class X1RoughCfgPPO( LeggedRobotCfgPPO ):
     class policy:
         init_noise_std = 0.8
         actor_hidden_dims = [32]
